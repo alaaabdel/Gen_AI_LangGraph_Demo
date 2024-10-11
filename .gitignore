@@ -1,0 +1,70 @@
+# General system files
+.DS_Store
+Thumbs.db
+*.log
+*.lock
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+.env
+env/
+venv/
+include/
+lib/
+gen_ai_demo1/
+notebooks/
+
+
+
+
+ENV/
+build/
+dist/
+*.egg-info/
+
+# Go
+bin/
+*.test
+*.out
+
+# Rust
+/target/
+Cargo.lock
+
+# Ruby
+*.gem
+*.rbc
+.rvm/
+.bundle/
+log/
+tmp/
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+
+# macOS
+*.DS_Store
+
+# IDEs
+.idea/
+.vscode/
+*.suo
+*.user
+*.rsuser
+*.sln
+*.swp
+
+# Compression files
+*.zip
+*.tar.gz
+*.rar
+*.7z
+*.bak
+
+
