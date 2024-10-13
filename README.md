@@ -2,7 +2,7 @@
 
 Query-Based Document Retrieval App
 
-A Streamlit app that enables users to query and retrieve relevant information from a set of documents. The app leverages HuggingFace embeddings and stores them in a Cassandra vector database for efficient document retrieval. Key techniques include document splitting, embedding generation, and retrieval-based NLP using vector search.
+A Q&A app that enables users to query and retrieve relevant information from a set of documents. The app leverages HuggingFace embeddings and stores them in a Cassandra vector database for efficient document retrieval. It incorporates an agent-based query router, which checks multiple sources—if relevant information isn't found in one store, it dynamically searches in another.
 
 
 
