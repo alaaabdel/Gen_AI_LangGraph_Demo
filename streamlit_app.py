@@ -16,18 +16,14 @@ def main():
     # Create a title for the app
     st.title("Document Query App")
 
-    # Create an input field for user queries
-    query = st.text_input("Enter your query:", value="", key="query")
-
     # Initialize Cassandra
     init_cassio()
 
     # Load and split documents
     urls = [
-        "https://lilianweng.github.io/posts/2023-06-23-agent/",
-        "https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/",
-        "https://lilianweng.github.io/posts/2023-10-25-adv-attack-llm/",
-        "https://mlabonne.github.io/blog/posts/A_Beginners_Guide_to_LLM_Finetuning.html",
+        "https://developers.google.com/machine-learning/resources/prompt-eng",
+        "https://huggingface.co/docs/transformers/main/en/tasks/visual_question_answering",
+        "https://aws.amazon.com/what-is/retrieval-augmented-generation/",
     ]
 
     # Load documents and split them into chunks
@@ -42,6 +38,8 @@ def main():
     groq_api_key = os.getenv("groq_api_key")
     query_router = QueryRouter(groq_api_key, vector_store_manager)
 
+    # Create an input field for user queries
+    query = st.text_input("Enter your query:", value="", key="query")
     # Process the query when the user submits it
     if st.button("Submit"):
         if query:
@@ -49,11 +47,9 @@ def main():
             answers = query_router.get_answer(query)
 
             if isinstance(answers, str):
-                print(answers)
                 answer = answers
             else:
                 # Print the answer
-                print(answers[0].page_content)
                 answer = answers[0].page_content
 
             # Display the answer
