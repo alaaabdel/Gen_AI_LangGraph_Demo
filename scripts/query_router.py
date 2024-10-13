@@ -7,12 +7,15 @@ from langchain_community.tools import WikipediaQueryRun
 
 from typing import Literal
 
+
 # Data model for routing
 class RouteQuery(BaseModel):
     """Route a user query to the most relevant datasource."""
+
     datasource: Literal["vectorstore", "wiki_search"] = Field(
         ..., description="Choose between Wikipedia or vectorstore."
     )
+
 
 class QueryRouter:
     def __init__(self, groq_api_key, vectorstore):
@@ -44,10 +47,17 @@ class QueryRouter:
         Returns:
             ChatPromptTemplate: A prompt template for routing questions.
         """
-        system_prompt = """You are an expert at routing a user question to a vectorstore or Wikipedia.
-        The vectorstore contains documents related to agents, prompt engineering, and adversarial attacks.
-        Use the vectorstore for questions on these topics. Otherwise, use wiki-search."""
-        
+        system_prompt = """You are an AI assistant specialized in directing user queries to the most appropriate information source. You have access to two primary resources:
+                    A specialized vectorstore containing in-depth information on:
+                    1. Prompt engineering techniques and best practices
+                    2. Visual question and answering systems
+                    3. Retrieval-Augmented Generation (RAG) applications and methodologies
+                    A general Wikipedia search function for broader topics
+                    Your task is to analyze each user question and determine the optimal source for answering:
+                    For queries related to the four specific topics listed above, direct the user to the vectorstore for accurate, specialized information.
+                    For all other questions or topics outside these areas, utilize the Wikipedia search function to provide general knowledge and background information.
+                    Ensure you make a clear decision for each query, selecting the most appropriate resource to deliver the most relevant and accurate response to the user."""
+
         return ChatPromptTemplate.from_messages(
             [
                 ("system", system_prompt),
@@ -65,7 +75,7 @@ class QueryRouter:
         """
         result = self.route_prompt | self.llm_router
         source = result.invoke({"question": query})
-        
+
         return source.datasource
 
     def retrieve_from_vectorstore(self, query):
@@ -86,9 +96,9 @@ class QueryRouter:
         Returns:
             str: Wikipedia article summary.
         """
-        wiki_wrapper = WikipediaAPIWrapper(top_k_results=1, doc_content_chars_max=200)
+        wiki_wrapper = WikipediaAPIWrapper(top_k_results=1, doc_content_chars_max=400)
         wiki_tool = WikipediaQueryRun(api_wrapper=wiki_wrapper)
-        
+
         wiki_results = wiki_tool.invoke({"query": query})
         return wiki_results or "No results found."
 

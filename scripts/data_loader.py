@@ -1,9 +1,9 @@
-
 import os
 import cassio
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import WebBaseLoader
 from dotenv import load_dotenv
+
 
 def init_cassio():
     """
@@ -14,7 +14,9 @@ def init_cassio():
     ASTRA_DB_ID = os.getenv("db_id")
 
     if not ASTRA_DB_APPLICATION_TOKEN or not ASTRA_DB_ID:
-        raise ValueError("Cassandra DB token or ID is missing from environment variables.")
+        raise ValueError(
+            "Cassandra DB token or ID is missing from environment variables."
+        )
 
     cassio.init(token=ASTRA_DB_APPLICATION_TOKEN, database_id=ASTRA_DB_ID)
     print("Cassandra connection initialized.")
@@ -23,10 +25,10 @@ def init_cassio():
 def load_documents(urls):
     """
     Load documents from a list of URLs.
-    
+
     Args:
         urls (list): List of URLs to load documents from.
-    
+
     Returns:
         list: List of documents loaded from the URLs.
     """
@@ -35,15 +37,15 @@ def load_documents(urls):
     return docs_list
 
 
-def split_documents(docs_list, chunk_size=500, chunk_overlap=0):
+def split_documents(docs_list, chunk_size=500, chunk_overlap=10):
     """
     Split documents into chunks for vectorization.
-    
+
     Args:
         docs_list (list): List of documents to split.
         chunk_size (int): Maximum size of each chunk.
         chunk_overlap (int): Overlap size between chunks.
-    
+
     Returns:
         list: List of document chunks.
     """

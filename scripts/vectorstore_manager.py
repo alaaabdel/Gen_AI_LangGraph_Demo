@@ -1,9 +1,12 @@
 from langchain_community.embeddings import HuggingFaceBgeEmbeddings
-from langchain.vectorstores.cassandra import Cassandra
+from langchain_community.vectorstores import Cassandra
 from langchain.indexes.vectorstore import VectorStoreIndexWrapper
 
+
 class VectorStoreManager:
-    def __init__(self, model_name="albert-base-v2", device="cpu", table_name="gen_ai_demo"):
+    def __init__(
+        self, model_name="albert-base-v2", device="cpu", table_name="gen_ai_dem"
+    ):
         """
         Initialize the vector store manager with embedding and vectorstore configurations.
         Args:
@@ -23,12 +26,12 @@ class VectorStoreManager:
         Returns:
             HuggingFaceBgeEmbeddings: The embedding model.
         """
-        model_kwargs = {'device': self.device}
-        encode_kwargs = {'normalize_embeddings': True}
+        model_kwargs = {"device": self.device}
+        encode_kwargs = {"normalize_embeddings": True}
         embedding_model = HuggingFaceBgeEmbeddings(
             model_name=self.model_name,
             model_kwargs=model_kwargs,
-            encode_kwargs=encode_kwargs
+            encode_kwargs=encode_kwargs,
         )
         return embedding_model
 
@@ -38,10 +41,7 @@ class VectorStoreManager:
         Returns:
             Cassandra: The initialized Cassandra vector store.
         """
-        return Cassandra(
-            embedding=self.embedding_model,
-            table_name=self.table_name
-        )
+        return Cassandra(embedding=self.embedding_model, table_name=self.table_name)
 
     def add_documents(self, documents):
         """

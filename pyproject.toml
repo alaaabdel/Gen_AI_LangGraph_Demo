@@ -7,7 +7,7 @@ readme = "README.md"
 packages = [{include = "genai_demo"}]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.10"
 pre-commit = "^3.0"
 langchain = "^0.3.3"
 langgraph = "^0.2.35"
@@ -21,8 +21,8 @@ langchain-groq = "^0.2.0"
 arxiv = "^2.1.3"
 wikipedia = "^1.4.0"
 ipykernel = "^6.29.5"
-torch = "1.13.1"
 sentence-transformers = "^2.2.2"
+streamlit = "^1.39.0"
 
 [build-system]
 requires = ["poetry-core"]

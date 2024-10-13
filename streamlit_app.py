@@ -6,8 +6,11 @@ from scripts.vectorstore_manager import VectorStoreManager
 from scripts.query_router import QueryRouter
 
 # Suppress warnings
-warnings.filterwarnings("ignore") 
-os.environ["TOKENIZERS_PARALLELISM"] = "false"  # Disable specific Hugging Face tokenizer warning
+warnings.filterwarnings("ignore")
+os.environ["TOKENIZERS_PARALLELISM"] = (
+    "false"  # Disable specific Hugging Face tokenizer warning
+)
+
 
 def main():
     # Create a title for the app
@@ -24,9 +27,9 @@ def main():
         "https://lilianweng.github.io/posts/2023-06-23-agent/",
         "https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/",
         "https://lilianweng.github.io/posts/2023-10-25-adv-attack-llm/",
-        "https://mlabonne.github.io/blog/posts/A_Beginners_Guide_to_LLM_Finetuning.html"
+        "https://mlabonne.github.io/blog/posts/A_Beginners_Guide_to_LLM_Finetuning.html",
     ]
-    
+
     # Load documents and split them into chunks
     docs_list = load_documents(urls)
     doc_splits = split_documents(docs_list)
@@ -36,22 +39,29 @@ def main():
     vector_store_manager.add_documents(doc_splits)
 
     # Initialize query router with Groq API key and the vector store
-    groq_api_key = os.getenv('groq_api_key')
+    groq_api_key = os.getenv("groq_api_key")
     query_router = QueryRouter(groq_api_key, vector_store_manager)
-
-
 
     # Process the query when the user submits it
     if st.button("Submit"):
         if query:
             # Get the answer from the router
-            answer = query_router.get_answer(query)
+            answers = query_router.get_answer(query)
+
+            if isinstance(answers, str):
+                print(answers)
+                answer = answers
+            else:
+                # Print the answer
+                print(answers[0].page_content)
+                answer = answers[0].page_content
 
             # Display the answer
             st.subheader("Answer:")
             st.write(answer)
         else:
             st.warning("Please enter a query.")
+
 
 if __name__ == "__main__":
     main()
