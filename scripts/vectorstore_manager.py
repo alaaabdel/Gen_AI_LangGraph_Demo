@@ -5,7 +5,7 @@ from langchain.indexes.vectorstore import VectorStoreIndexWrapper
 
 class VectorStoreManager:
     def __init__(
-        self, model_name="albert-base-v2", device="cpu", table_name="gen_ai_dem"
+        self, model_name="all-MiniLM-L6-v2", device="cpu", table_name="gen_ai"
     ):
         """
         Initialize the vector store manager with embedding and vectorstore configurations.
@@ -60,5 +60,4 @@ class VectorStoreManager:
         Returns:
             list: List of relevant documents retrieved from the vector store.
         """
-        retriever = self.vectorstore.as_retriever()
-        return retriever.invoke(query)
+        return self.vectorstore.similarity_search(query, k=1)

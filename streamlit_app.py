@@ -49,13 +49,18 @@ def main():
 
             if isinstance(answers, str):
                 answer = answers
+                source = "Wiki"
             else:
                 # Print the answer
-                answer = answers[0].page_content
+                answer = answers[-1].metadata['description']
+                source = answers[-1].metadata['source']
 
             # Display the answer
             st.subheader("Answer:")
             st.write(answer)
+
+            st.subheader("Source:")
+            st.write(source)
         else:
             st.warning("Please enter a query.")
 

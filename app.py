@@ -35,11 +35,12 @@ def main(query):
 
     # Get the answer from the router
     answers = query_router.get_answer(query)
+
     # Print the answer
     if isinstance(answers, str):
         print(answers)
     else:
-        print(answers[0].page_content)
+        print(answers[-1].metadata['description'])
         # for key,item in answer.metadata.items():
         #     print(key)
         #     print(item if key = "page_")
