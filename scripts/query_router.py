@@ -37,7 +37,7 @@ class QueryRouter:
         Returns:
             ChatGroq: An instance of the structured LLM router.
         """
-        llm = ChatGroq(groq_api_key=groq_api_key, model_name="Gemma2-9b-It")
+        llm = ChatGroq(groq_api_key=groq_api_key, model_name="llama-3.1-70b-versatile")
         structured_llm_router = llm.with_structured_output(RouteQuery)
         return structured_llm_router
 
@@ -49,9 +49,9 @@ class QueryRouter:
         """
         system_prompt = """You are an AI assistant specialized in directing user queries to the most appropriate information source. You have access to two primary resources:
                     A specialized vectorstore containing in-depth information on:
-                    1. Prompt engineering techniques and best practices
-                    2. Visual question and answering systems
-                    3. Retrieval-Augmented Generation (RAG) applications and methodologies
+                    1. Prompt engineering
+                    2. LLM Hallucination
+                    3. adversial attacks
                     A general Wikipedia search function for broader topics
                     Your task is to analyze each user question and determine the optimal source for answering:
                     For queries related to the four specific topics listed above, direct the user to the vectorstore for accurate, specialized information.
