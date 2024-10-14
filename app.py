@@ -17,9 +17,10 @@ def main(query):
 
     # Load and split documents
     urls = [
-        "https://developers.google.com/machine-learning/resources/prompt-eng",
-        "https://huggingface.co/docs/transformers/main/en/tasks/visual_question_answering",
-        "https://aws.amazon.com/what-is/retrieval-augmented-generation/",
+            "https://lilianweng.github.io/posts/2024-07-07-hallucination/",
+            "https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/",
+            "https://lilianweng.github.io/posts/2023-10-25-adv-attack-llm/",
+
     ]
     docs_list = load_documents(urls)
     doc_splits = split_documents(docs_list)
@@ -34,8 +35,6 @@ def main(query):
 
     # Get the answer from the router
     answers = query_router.get_answer(query)
-    breakpoint()
-
     # Print the answer
     if isinstance(answers, str):
         print(answers)

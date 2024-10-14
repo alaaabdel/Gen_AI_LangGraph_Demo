@@ -21,9 +21,10 @@ def main():
 
     # Load and split documents
     urls = [
-        "https://developers.google.com/machine-learning/resources/prompt-eng",
-        "https://huggingface.co/docs/transformers/main/en/tasks/visual_question_answering",
-        "https://aws.amazon.com/what-is/retrieval-augmented-generation/",
+            "https://lilianweng.github.io/posts/2023-06-23-agent/",
+            "https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/",
+            "https://lilianweng.github.io/posts/2023-10-25-adv-attack-llm/",
+
     ]
 
     # Load documents and split them into chunks
