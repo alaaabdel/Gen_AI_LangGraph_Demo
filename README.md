@@ -2,7 +2,7 @@
 
 Query-Based Document Retrieval App
 
-A Q&A app that enables users to query and retrieve relevant information from a set of documents. The app leverages HuggingFace embeddings and stores them in a Cassandra vector database for document retrieval. It incorporates an agent-based query router, which checks multiple sources—if relevant information isn't found in one store, it dynamically searches in another.
+A Q&A app that enables users to query and retrieve relevant information from a set of documents. The app leverages HuggingFace embeddings and stores them in a Cassandra vector database for document retrieval. It incorporates an agent-based query router, which checks multiple sources—if relevant information isn't found in one store, it dynamically searches in another. 
 
 
 
@@ -10,7 +10,8 @@ A Q&A app that enables users to query and retrieve relevant information from a s
 
 - create a table in Astra DB
 - create token for groq API to access llama model
-- store env variables for both astra DB and groq 
+- store env variables for both astra DB and groq
+- Advised to run the setup in linux env
 
 2. Now run this command to install dependenies in the `pyproject.toml` file. 
 
