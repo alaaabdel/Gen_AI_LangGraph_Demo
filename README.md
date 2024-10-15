@@ -23,10 +23,12 @@ make create-env
 make install-env
 ```
 
-## To run the app in command line 
+## To run the app in command line along with query examples
 
 ```python
-python app.py --query <enter your question>
+python app.py --query "What is prompt engineering?"  #for accessing vectorstore
+python app.py --query "Who is tom hanks?"  #for rerouting to wiki
+
 ```
 
 
