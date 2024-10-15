@@ -11,7 +11,7 @@ A Q&A app that enables users to query and retrieve relevant information from a s
 - create a table in Astra DB
 - create token for groq API to access llama model
 - store env variables for both astra DB and groq
-- Advised to run the setup in linux env
+- Advised to run the setup in linux
 
 2. Now run this command to install dependenies in the `pyproject.toml` file. 
 
