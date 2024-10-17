@@ -51,12 +51,15 @@ def main():
                 source = "Wiki"
             else:
                 # Print the answer
-                answer = answers[-1].metadata["description"]
-                source = answers[-1].metadata["source"]
+                answer = answers[0].metadata['description'] + "\n" + answers[0].page_content
+                source = answers[0].metadata["source"]
 
             # Display the answer
             st.subheader("Answer:")
             st.write(answer)
+
+            st.subheader("Source:")
+            st.write(source)
 
             st.subheader("Source:")
             st.write(source)

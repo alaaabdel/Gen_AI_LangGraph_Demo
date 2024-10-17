@@ -39,12 +39,7 @@ def main(query):
     if isinstance(answers, str):
         print(answers)
     else:
-        print(answers[-1].metadata["description"])
-        # for key,item in answer.metadata.items():
-        #     print(key)
-        #     print(item if key = "page_")
-
-        # print(answer)
+        print(answers[0].metadata['description'] + "\n" + answers[0].page_content)
 
 
 if __name__ == "__main__":

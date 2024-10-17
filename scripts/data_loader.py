@@ -37,7 +37,7 @@ def load_documents(urls):
     return docs_list
 
 
-def split_documents(docs_list, chunk_size=500, chunk_overlap=10):
+def split_documents(docs_list, chunk_size=200, chunk_overlap=10):
     """
     Split documents into chunks for vectorization.
 
