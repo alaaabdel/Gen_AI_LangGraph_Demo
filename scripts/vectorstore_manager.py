@@ -5,7 +5,7 @@ from langchain.indexes.vectorstore import VectorStoreIndexWrapper
 
 class VectorStoreManager:
     def __init__(
-        self, model_name="all-MiniLM-L6-v2", device="cpu", table_name="gen_ai"
+        self, model_name="all-MiniLM-L6-v2", device="cpu", table_name="gen_ai_table"
     ):
         """
         Initialize the vector store manager with embedding and vectorstore configurations.

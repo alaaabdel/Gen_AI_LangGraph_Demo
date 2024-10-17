@@ -21,10 +21,9 @@ def main():
 
     # Load and split documents
     urls = [
-            "https://lilianweng.github.io/posts/2023-06-23-agent/",
-            "https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/",
-            "https://lilianweng.github.io/posts/2023-10-25-adv-attack-llm/",
-
+        "https://lilianweng.github.io/posts/2024-07-07-hallucination/",
+        "https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/",
+        "https://lilianweng.github.io/posts/2023-10-25-adv-attack-llm/",
     ]
 
     # Load documents and split them into chunks
@@ -52,8 +51,8 @@ def main():
                 source = "Wiki"
             else:
                 # Print the answer
-                answer = answers[-1].metadata['description']
-                source = answers[-1].metadata['source']
+                answer = answers[-1].metadata["description"]
+                source = answers[-1].metadata["source"]
 
             # Display the answer
             st.subheader("Answer:")

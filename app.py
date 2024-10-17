@@ -17,10 +17,9 @@ def main(query):
 
     # Load and split documents
     urls = [
-            "https://lilianweng.github.io/posts/2024-07-07-hallucination/",
-            "https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/",
-            "https://lilianweng.github.io/posts/2023-10-25-adv-attack-llm/",
-
+        "https://lilianweng.github.io/posts/2024-07-07-hallucination/",
+        "https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/",
+        "https://lilianweng.github.io/posts/2023-10-25-adv-attack-llm/",
     ]
     docs_list = load_documents(urls)
     doc_splits = split_documents(docs_list)
@@ -40,7 +39,7 @@ def main(query):
     if isinstance(answers, str):
         print(answers)
     else:
-        print(answers[-1].metadata['description'])
+        print(answers[-1].metadata["description"])
         # for key,item in answer.metadata.items():
         #     print(key)
         #     print(item if key = "page_")
